@@ -1,0 +1,4 @@
+PKG re.str
+
+S src
+B _build/**
