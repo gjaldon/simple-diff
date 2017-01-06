@@ -3,24 +3,10 @@ let new_value = "Foo bar baz\nTest\nmurder\nshe\nwrote\ntrip"
 let new_lines = Re_str.split (Re_str.regexp "\n") new_value |> Array.of_list
 let old_lines = Re_str.split (Re_str.regexp "\n") old_value |> Array.of_list
 
-module SimpleDiffTest = (struct
-  type t = Main.diff list
+module SimpleDiffTest = struct
+  include Main
 
-  let pp diffs =
-    List.fold_left (fun str diff ->
-      let new_content = match diff with
-        | Main.Deleted lines ->
-          let lines = String.concat "\n" (Array.to_list lines) in
-          Printf.sprintf "Deleted lines:\n%s" lines
-        | Main.Added lines ->
-          let lines = String.concat "\n" (Array.to_list lines) in
-          Printf.sprintf "Added lines:\n%s" lines
-        | Main.Equal lines ->
-          let lines = String.concat "\n" (Array.to_list lines) in
-          Printf.sprintf "Equal lines:\n%s" lines
-      in
-      str ^ "\n" ^ new_content
-    ) "" diffs
+  let pp = Fmt.Dump.list
 
   let equal diffs_1 diffs_2 =
     if List.length diffs_1 = List.length diffs_2 then
@@ -29,11 +15,12 @@ module SimpleDiffTest = (struct
       ) diffs_1 diffs_2
     else
       false
+end
 
-end : Alcotest.TESTABLE)
+let diff_t: SimpleDiffTest.t Alcotest.testable = (module SimpleDiffTest)
 
 let diff () =
-  Alcotest.check "Foo" [] (Main.get_diff old_lines new_lines)
+  Alcotest.(check list diff_t) "Foo" [] (Main.get_diff old_lines new_lines)
 
 let test_set = [
   "Simple diff", `Quick, diff;
