@@ -1,2 +1,5 @@
 true: package(re.str), debug
 <src>: include
+<src_test>: include
+
+<src_test/test.ml>: package(alcotest)
