@@ -3,7 +3,7 @@ let new_value = "Foo bar baz\nTest\nmurder\nshe\nwrote\ntrip"
 let new_lines = Re_str.split (Re_str.regexp "\n") new_value |> Array.of_list
 let old_lines = Re_str.split (Re_str.regexp "\n") old_value |> Array.of_list
 
-include Main
+include Simple_diff
 
 let expected =
   [ Equal   [| "Foo bar baz"; |];

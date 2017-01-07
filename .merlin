@@ -1,4 +1,5 @@
 PKG re.str
 
 S src
+S src_test
 B _build/**
