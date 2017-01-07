@@ -1,3 +1,5 @@
 _build/
 
-main.byte
+simple_diff.byte
+simple_diff.native
+test.byte
