@@ -1,4 +1,5 @@
 _build/
+simple-diff*/
 
 simple_diff.byte
 simple_diff.native
