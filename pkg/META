@@ -1,0 +1,7 @@
+description     = "Simple_diff is a pure OCaml diffing algorithm."
+version         = "1.2"
+requires        = "re re.str"
+archive(byte)   = "simple_diff.cma"
+archive(native) = "simple_diff.cmxa"
+plugin(byte)    = "simple_diff.cma"
+plugin(native)  = "simple_diff.cmxs"
