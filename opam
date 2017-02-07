@@ -1,6 +1,5 @@
-opam-version: "1.2.1"
+opam-version: "1.2"
 name:         "simple-diff"
-version:      "0.2"
 maintainer:   "Gabriel Jaldon <gjaldon85@gmail.com>"
 authors:      [ "Gabriel Jaldon" ]
 homepage:     "https://github.com/gjaldon/simple_diff"
@@ -8,9 +7,7 @@ bug-reports:  "https://github.com/gjaldon/simple_diff/issues"
 license:      "ISC"
 dev-repo:     "https://github.com/gjaldon/simple_diff"
 
-build: [
-  [make]
-]
+build: [ "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" ]
 
 depends: [
   "topkg"      {build}

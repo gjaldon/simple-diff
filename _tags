@@ -1,3 +1,6 @@
-true: package(re.str), debug
+true: bin_annot, safe_string
+
+true: package(re.str)
+
 <src>: include
 <src_test>: include
