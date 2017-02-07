@@ -4,3 +4,4 @@ simple-diff*/
 simple_diff.byte
 simple_diff.native
 test.byte
+simple-diff.*
