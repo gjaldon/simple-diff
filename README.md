@@ -8,16 +8,23 @@ Simple Diff is a pure OCaml implementation of a diffing algorithm ported from ht
 
 `opam install simple-diff`
 
-It exposes only one function, `get_diff`, which expects two arrays of strings. These arrays of strings typically represent lines of a new and old versions of a file. The return value is a list of `diff`s. Below is an example of how to use:
+Below is some example usage in top/utop:
 
 ```ocaml
-open Simple_diff;;
-let old = [| "foo"; "bar"; "baz"; "bin" |];;
-let new = [| "bar"; "baz"; "foo"; "bin" |];;
-get_diff old new;;
+let old_lines = [| "I"; "really"; "like"; "icecream" |]
+let new_lines = [| "I"; "do"; "not"; "like"; "icecream" |]
+
+module Diff = Simple_diff.Make(String);;
+open Diff;;
+
+get_diff old_lines new_lines;;
+
 #=> [
-  Deleted [| "foo"; "bar"; "baz" |];
-  Added [| "bar"; "baz"; "foo" |];
-  Equal [| "bin" |]
+  Equal [| "I" |];
+  Deleted [| "really" |];
+  Added [| "do"; "not" |];
+  Equal [| "like"; "icecream" |]
 ]
 ```
+
+As displayed above, Simple Diff exposes a `Simple_diff.Make` functor which accepts a module that implements the `Simple_diff.Comparable` interface (check out the docs for the interface). This makes `Simple_diff.S.get_diff` work with lists of elements of whatever you type you want (as long as interface is followed).
