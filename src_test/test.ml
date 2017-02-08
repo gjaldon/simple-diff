@@ -3,6 +3,9 @@ let new_lines = [| "I"; "do"; "not"; "like"; "icecream" |]
 
 include Simple_diff
 
+module = Make(String)
+open Diff
+
 let expected =
   [ Equal   [| "I"; |];
     Deleted [| "really" |];
