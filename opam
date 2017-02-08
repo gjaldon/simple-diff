@@ -6,6 +6,7 @@ homepage:     "https://github.com/gjaldon/simple_diff"
 bug-reports:  "https://github.com/gjaldon/simple_diff/issues"
 license:      "ISC"
 dev-repo:     "https://github.com/gjaldon/simple_diff.git"
+doc:          "https://gjaldon.github.io/simple-diff/"
 
 build: [ "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" ]
 
