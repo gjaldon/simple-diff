@@ -1,17 +1,13 @@
-let old_value = "Foo bar baz\nTesticles\nmurder\nshe\nwrote\nend"
-let new_value = "Foo bar baz\nTest\nmurder\nshe\nwrote\ntrip"
-let new_lines = Re_str.split (Re_str.regexp "\n") new_value |> Array.of_list
-let old_lines = Re_str.split (Re_str.regexp "\n") old_value |> Array.of_list
+let old_lines = [| "I"; "really"; "like"; "icecream" |]
+let new_lines = [| "I"; "do"; "not"; "like"; "icecream" |]
 
 include Simple_diff
 
 let expected =
-  [ Equal   [| "Foo bar baz"; |];
-    Deleted [| "Testicle"; |];
-    Added   [| "Test"; |];
-    Equal   [| "murder"; "she"; "wrote"; |];
-    Deleted [| "end"; |];
-    Added   [| "trip"; |];
+  [ Equal   [| "I"; |];
+    Deleted [| "really" |];
+    Added [| "do"; "not" |];
+    Equal [| "like"; "icecream" |];
   ]
 
 let pp diffs =
