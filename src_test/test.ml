@@ -1,9 +1,7 @@
 let old_lines = [| "I"; "really"; "like"; "icecream" |]
 let new_lines = [| "I"; "do"; "not"; "like"; "icecream" |]
 
-include Simple_diff
-
-module = Make(String)
+module Diff = Simple_diff.Make(String)
 open Diff
 
 let expected =
